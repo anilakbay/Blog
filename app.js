@@ -3,9 +3,12 @@ require("dotenv").config(); // .env dosyasını yükle, böylece çevresel deği
 const express = require("express"); // Express'i projeye dahil et
 const expressLayout = require("express-ejs-layouts"); // EJS Layouts'i projeye dahil et
 
-const app = express(); // Express uygulamasını oluştur
+const connectDB = require("./server/config/db"); // Veritabanı baglantısını projeye dahil et
 
-const PORT = process.env.PORT || 5000; // Port numarasını belirle, eğer ortam değişkeni yoksa 5000'i kullan
+const app = express(); // Express uygulamasını oluştur
+const PORT = process.env.PORT || 5000;
+
+connectDB(); // Port numarasını belirle, eğer ortam değişkeni yoksa 5000'i kullan
 
 app.use(express.static("public")); // "public" klasöründeki statik dosyaları sun
 
